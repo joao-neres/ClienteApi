@@ -1,4 +1,6 @@
 using ClienteApi.Data;
+using ClienteApi.Repositories;
+using ClienteApi.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,9 @@ builder.Services.AddSingleton<ConexaoBanco>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+builder.Services.AddScoped<ClienteRepository>();
+builder.Services.AddScoped<ClienteService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
